@@ -8,22 +8,24 @@ public class OperationsFinder {
 
 	public static void main(String[] args) {
 
-		int goal = collectGoalFromUser();
+		int goal = collectGoalFromUserTerminal();
 
 		var answers = findAllCalculations(1, 2, "", goal);
 
 		if (answers.size() == 0)
 			System.out.println("Brak rozwiązań");
 
+		
+		int numberOfLine = 1;
 		for (String calculations : answers) {
-			System.out.println("((((1 " + calculations.charAt(0) + " 2) " + calculations.charAt(1) + " 3) "
+			System.out.println(numberOfLine++ + " : ((((1 " + calculations.charAt(0) + " 2) " + calculations.charAt(1) + " 3) "
 					+ calculations.charAt(2) + " 4) " + calculations.charAt(3) + " 5) " + calculations.charAt(4)
 					+ " 6 = " + goal);
 		}
 
 	}
 
-	public static int collectGoalFromUser() {
+	public static int collectGoalFromUserTerminal() {
 		int toReturn = 0;
 		var userInput = new Scanner(System.in);
 		try {
@@ -34,7 +36,7 @@ public class OperationsFinder {
 
 		} catch (InputMismatchException e) {
 			System.out.println("Wrong input");
-			toReturn = collectGoalFromUser();
+			toReturn = collectGoalFromUserTerminal();
 		} finally {
 			userInput.close();
 		}

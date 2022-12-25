@@ -1,13 +1,14 @@
 package task4;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
-
+import java.util.Scanner;
 
 public class OperationsFinder {
 
 	public static void main(String[] args) {
 
-		int goal = 20;
+		int goal = collectGoalFromUser();
 
 		var answers = findAllCalculations(1, 2, "", goal);
 
@@ -22,7 +23,25 @@ public class OperationsFinder {
 
 	}
 
-	public static LinkedList<String> findAllCalculations(int num1, int num2, String previousOperations, int goal) {
+	public static int collectGoalFromUser() {
+		int toReturn = 0;
+		var userInput = new Scanner(System.in);
+		try {
+			System.out.println("Please input a natural number bigget than -1000 and smaler than 1000:");
+			toReturn = userInput.nextInt();
+			if (toReturn <= -1000 || toReturn >= 1000)
+				throw new InputMismatchException();
+
+		} catch (InputMismatchException e) {
+			System.out.println("Wrong input");
+			toReturn = collectGoalFromUser();
+		} finally {
+			userInput.close();
+		}
+		return toReturn;
+	}
+
+	public static LinkedList<String> findAllCalculations(double num1, int num2, String previousOperations, int goal) {
 		var toReturn = new LinkedList<String>();
 
 		if (num2 == 7) {

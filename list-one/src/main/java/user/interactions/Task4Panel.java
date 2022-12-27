@@ -51,7 +51,7 @@ public class Task4Panel extends JPanel implements ActionListener {
 	private void createTaskText() {
 		var taskDescription = new JLabel();
 		taskDescription.setText(
-				"<html> This task solves equation:<br><center>((n<sub>0</sub>?n<sub>2)</sub>?n<sub>3</sub>)?...)?n<sub>n</sub> = goal</center> <br> whereas: <br> <ul> <li> Each ? can be one of four basic arithmetic operations: +, -, * or / </li> <li> n<sub>i</sub> represent next natural numbers, which means n<sub>i+1</sub> = n<sub>i</sub> + 1 </li> <li> n<sub>0</sub> and n<sub>n</sub> are chosen by the user </li> <li> goal is chosen by the user</li> </ul></html>");
+				"<html> This task solves equation:<br><center>((n<sub>0</sub>?n<sub>2)</sub>?n<sub>3</sub>)?...)?n<sub>n</sub> = goal</center> <br> whereas: <br> <ul> <li> Each ? can be one of four basic arithmetic operations: +, -, * or / </li> <li> n<sub>i</sub> represent next natural numbers, which means n<sub>i+1</sub> = n<sub>i</sub> + 1 </li> <li> n<sub>0</sub> and n<sub>n</sub> are chosen by the user </li> <li> goal is chosen by the user</li> <li>n<sub>n</sub> cannot be more than 15 numbers bigget than n<sub>0</sub></li> <li>Goal needs to be in range (-1000,1000)</li> </ul></html>");
 		taskDescription.setBounds(50, 50, 450, 250);
 		taskDescription.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
 		taskDescription.setVisible(true);
@@ -74,7 +74,7 @@ public class Task4Panel extends JPanel implements ActionListener {
 	
 	private boolean checkIntArguments(int min, int max, int goal) throws IllegalArgumentException {
 		if(goal < -999 || goal > 999) throw new IllegalArgumentException();
-		if(min > max) throw new IllegalArgumentException();
+		if(min > max || min < max - 15) throw new IllegalArgumentException();
 		return true;
 	}
 	

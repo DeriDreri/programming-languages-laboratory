@@ -2,13 +2,12 @@ package task2;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-
 import javax.naming.LimitExceededException;
 
 public class AlghoritmGenerator {
 
-	ArrayList<Integer> numbersSequence;
-	ArrayList<String> oddOrEvenSequence;
+	private ArrayList<Integer> numbersSequence;
+	private ArrayList<String> oddOrEvenSequence;
 
 	AlghoritmGenerator(int number) {
 		generateSequence(number);
@@ -21,7 +20,8 @@ public class AlghoritmGenerator {
 		for (int i = 1; i <= 1000; i++)
 			try {
 				numbersSequenceBuff.add(findNextNumber(numbersSequenceBuff.get(i - 1), oddOrEvenBuffList));
-				if(numbersSequenceBuff.getLast() == 1) break;
+				if (numbersSequenceBuff.getLast() == 1)
+					break;
 			} catch (LimitExceededException e) {
 				break;
 			}
@@ -33,12 +33,13 @@ public class AlghoritmGenerator {
 		var algoritm = new AlghoritmGenerator(27);
 		System.out.println(algoritm.toString());
 	}
-	
+
 	@Override
 	public String toString() {
 		String toReturn = "";
 		for (int i = 0; i < numbersSequence.size() - 1; i++) {
-			toReturn += numbersSequence.get(i) + " -> " + oddOrEvenSequence.get(i) + " -> " + numbersSequence.get(i+1) + "\n"; 
+			toReturn += numbersSequence.get(i) + " -> " + oddOrEvenSequence.get(i) + " -> " + numbersSequence.get(i + 1)
+					+ "\n";
 		}
 		return toReturn;
 	}

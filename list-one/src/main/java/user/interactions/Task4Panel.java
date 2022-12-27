@@ -30,7 +30,6 @@ public class Task4Panel extends JPanel implements ActionListener {
 		createInputFields();
 		createExecuteButton();
 		createSolutionsField();
-
 	}
 
 	private void createSolutionsField() {

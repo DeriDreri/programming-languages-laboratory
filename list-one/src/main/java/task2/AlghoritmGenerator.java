@@ -23,6 +23,7 @@ public class AlghoritmGenerator {
 				if (numbersSequenceBuff.getLast() == 1)
 					break;
 			} catch (LimitExceededException e) {
+				numbersSequenceBuff.add(null);
 				break;
 			}
 		numbersSequence = new ArrayList<Integer>(numbersSequenceBuff);
@@ -30,7 +31,7 @@ public class AlghoritmGenerator {
 	}
 
 	public static void main(String[] args) {
-		var algoritm = new AlghoritmGenerator(27);
+		var algoritm = new AlghoritmGenerator(2000000000);
 		System.out.println(algoritm.toString());
 	}
 
@@ -45,18 +46,21 @@ public class AlghoritmGenerator {
 	}
 
 	private int findNextNumber(int number, LinkedList<String> oddOrEven) throws LimitExceededException {
-		int toReturn;
+		long toReturn;
 
 		if (number % 2 == 0) {
 			toReturn = number / 2;
 			oddOrEven.add("Even");
 		} else {
-			toReturn = number * 3 + 1;
+			toReturn = (long) number * 3 + 1;
 			oddOrEven.add("Odd");
 		}
-		if (toReturn < 0)
+		if (toReturn > Integer.MAX_VALUE) {
+			oddOrEven.removeLast();
+			oddOrEven.add("OutOfBounds");
 			throw new LimitExceededException();
-		return toReturn;
+		}
+		return (int) toReturn;
 	}
 
 }

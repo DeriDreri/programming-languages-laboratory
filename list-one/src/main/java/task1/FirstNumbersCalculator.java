@@ -15,11 +15,6 @@ public class FirstNumbersCalculator {
 		}
 	}
 	
-	public static void main(String[] args) {
-		var primeNumbers = new FirstNumbersCalculator("23");
-		System.out.println(primeNumbers.foundPrimeNumbers);
-	}
-	
 	public int getNumberOfFoundPrimeNumbers() {
 		return foundPrimeNumbers;
 	}
@@ -39,7 +34,7 @@ public class FirstNumbersCalculator {
 				continue;
 			}
 			var factorial = BigIntegerFactorial(i-2);
-				sumOfPrimeNumbers += factorial.subtract(new BigInteger(Integer.toString(i)).multiply(factorial.divide(new BigInteger(Integer.toString(i))))).intValue();
+			sumOfPrimeNumbers += factorial.subtract(new BigInteger(Integer.toString(i)).multiply(factorial.divide(new BigInteger(Integer.toString(i))))).intValue();
 		}
 		return sumOfPrimeNumbers;
 	}
@@ -63,18 +58,8 @@ public class FirstNumbersCalculator {
 	private BigInteger BigIntegerFactorial(int number) {
 		var toReturn = new BigInteger(Long.toString(longFactorial(number)));
 		for (int i = 21; i <= number; i++) {
-			toReturn.multiply(new BigInteger(Integer.toString(i)));
+			toReturn = toReturn.multiply(new BigInteger(Integer.toString(i)));
 		}
 		return toReturn;
 	}
-	
-//	private int verifyNeededDataSize(String number) throws NumberFormatException {
-//		int analysed = Integer.parseInt(number);
-//		if (analysed < 11)
-//			return 1;
-//		if (analysed < 19)
-//			return 0;
-//		return -1;
-//	}
-
 }
